@@ -1,0 +1,6 @@
+#(c) 2011 Muhammad Najmi Ahmad Zabidi
+# Modified codes, as in the python codes
+
+To use, works with Python 2.x (suggesting 2.6,2.7)
+
+python pi-ngaji.py <binary-file>
