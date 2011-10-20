@@ -1,7 +1,6 @@
 #Licensed under GPL v 3
-# -*- coding: rot13 -*-
 #zretrq naq zbqvsvrq sebz Wbkrna Mrebjvar IZ qrgrpg, Nheben Erthyne rkcerffvbaf frnepu sbe fgngvp nanylfvf
-#zbqvsvrq ol Anwzv (2011)
+# Muhammad Najmi Ahmad Zabidi (2011)
 vzcbeg unfuyvo
 vzcbeg gvzr
 vzcbeg ovanfpvv
