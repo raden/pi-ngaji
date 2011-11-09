@@ -324,5 +324,7 @@ def pegi_check():
 
 
 pegi_check()
-print "\nChecking VirusTotal results...\n"
+print "\nChecking VirusTotal results..."
+print "It needs you to insert your API key inside this code.."
+print "Please read http://www.virustotal.com/advanced.html#publicapi for API details\n"
 get_report(filename)
