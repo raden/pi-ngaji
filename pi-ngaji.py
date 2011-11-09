@@ -1,6 +1,7 @@
 #Licensed under GPL v 3
 #merged and modified from Joxean Zerowine VM detect, Aurora Regular expressions search for static analysis
 #modified by Najmi (2011)
+# VT modules was modified from Bryce Boe http://www.bryceboe.com/2010/09/01/submitting-binaries-to-virustotal/
 import hashlib
 import time
 import binascii
