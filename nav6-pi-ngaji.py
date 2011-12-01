@@ -23,15 +23,16 @@ API_KEY = '5f666ccd6cd27088767898c90b9faf3fc0e8178444966d79fa16cce303ba8d3b'
 # The following function is modified from the snippet at:
 # http://code.activestate.com/recipes/146306/
 
+#Uncommenting the original, I want to test nav6 API call instances
 
-INTERESTING_CALLS = ["CreateMutex", "CopyFile", "CreateFile.*WRITE", "NtasdfCreateFile", "call shell32", "advapi32.RegOpenKey",
-        "KERNEL32.CreateProcess", "shdocvw", "gethostbyname", "ws2_32.bind", "ws2_32.listen", "ws2_32.htons",
-        "advapi32.RegCreate", "advapi32.RegSet", "http://","Socket",
-        "^([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])",
-        "OutputDebugString","GetEnvironmentStrings","LoadLibraryA","WSASocketA", "GetProcAddress",
-        "FindWindow","CreateProcess","DuplicateTokenEx","ImpersonateNamedPipeClient","RevertToSelf","signal",
-        "IsDebuggerPresent"
-        ]
+#INTERESTING_CALLS = ["CreateMutex", "CopyFile", "CreateFile.*WRITE", "NtasdfCreateFile", "call shell32", "advapi32.RegOpenKey",
+#        "KERNEL32.CreateProcess", "shdocvw", "gethostbyname", "ws2_32.bind", "ws2_32.listen", "ws2_32.htons",
+#        "advapi32.RegCreate", "advapi32.RegSet", "http://","Socket",
+#        "^([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])",
+#        "OutputDebugString","GetEnvironmentStrings","LoadLibraryA","WSASocketA", "GetProcAddress",
+#        "FindWindow","CreateProcess","DuplicateTokenEx","ImpersonateNamedPipeClient","RevertToSelf","signal",
+#        "IsDebuggerPresent"
+#        ]
 
 #These are calls that we being used by Altyeb in "Computer Virus Detection Using Features Ranking and Machine Learning", 2011
 
