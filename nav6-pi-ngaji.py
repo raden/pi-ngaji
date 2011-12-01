@@ -18,7 +18,7 @@ DEFAULT_TYPE = 'application/octet-stream'
 REPORT_URL = 'https://www.virustotal.com/api/get_file_report.json'
 SCAN_URL = 'https://www.virustotal.com/api/scan_file.json'
 
-API_KEY = '5f666ccd6cd27088767898c90b9faf3fc0e8178444966d79fa16cce303ba8d3b'
+API_KEY = ''
 
 # The following function is modified from the snippet at:
 # http://code.activestate.com/recipes/146306/
