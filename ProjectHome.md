@@ -1,0 +1,1 @@
+Malware static analysis based from Joxean Zero Wine sandbox, Ben Aurora string search regular expression codes.
