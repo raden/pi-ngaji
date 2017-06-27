@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 #Licensed under GPL v 3
 #merged and modified from Joxean Zerowine VM detect, Aurora Regular expressions search for static analysis
-#modified by Najmi (2017)
+#modified by Najmi 2011, 2017
 import hashlib
 import time
 import binascii
