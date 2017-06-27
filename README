@@ -3,7 +3,7 @@
 
 To use, works with Python 2.x (suggesting 2.6,2.7)
 
-python2 pi-ngaji.py <binary-file>
+python2 pi-ngaji.py <binary-file> <virus total api key>
 
 NOTES:
 -It needs python-pe. In Ubuntu, this can be achieved by sudo apt-get install python-pefile
