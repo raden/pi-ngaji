@@ -1,6 +1,7 @@
+#!/usr/bin/python2
 #Licensed under GPL v 3
 #merged and modified from Joxean Zerowine VM detect, Aurora Regular expressions search for static analysis
-#modified by Najmi (2011)
+#modified by Najmi (2017)
 import hashlib
 import time
 import binascii
@@ -21,13 +22,15 @@ REPORT_URL = 'https://www.virustotal.com/api/get_file_report.json'
 SCAN_URL = 'https://www.virustotal.com/api/scan_file.json'
 #SCAN_URL = 'https://www.virustotal.com/vtapi/v2/url/scan'
 
-# Please get your API key from Virus Total's website
-API_KEY = ''
-
-
 # The following function is modified from the snippet at:
 # http://code.activestate.com/recipes/146306/
 
+# Please get your API key from Virus Total's website
+if len(sys.argv) != 3:
+        print "Usage %s <filename> <api key>" % sys.argv[0] 
+        sys.exit(1)
+
+API_KEY = sys.argv[2]
 
 INTERESTING_CALLS = ["CreateMutex", "CopyFile", "CreateFile.*WRITE", "NtasdfCreateFile", "call shell32", "advapi32.RegOpenKey",
         "KERNEL32.CreateProcess", "shdocvw", "gethostbyname", "ws2_32.bind", "ws2_32.listen", "ws2_32.htons",
@@ -197,16 +200,6 @@ def showDebuggingTricks(buf):
 
 	#return checkTricks
 
-def usage():
-    print "Usage:", sys.argv[0], "<file>"
-
-if __name__ == "__main__":
-#    banner()
-    if len(sys.argv) == 1:
-        usage()
-        sys.exit(1)
-    else:
-        main(sys.argv[1])
 
 def start_analysis_registry():
         for line in hosts:
@@ -293,7 +286,8 @@ def get_report(filename):
     md5sum = hashlib.md5(open(filename, 'rb').read()).hexdigest()
     json = post_multipart(REPORT_URL, {'resource':md5sum, 'key':API_KEY})
     data = simplejson.loads(json)
-    
+   
+    print data 
     if 'response_code' in data != 1:
         print 'Result not found, submitting file.'
         data = scan_file(filename)
@@ -308,15 +302,11 @@ def get_report(filename):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print 'Usage: %s filename' % sys.argv[0]
-        sys.exit(1)
 
     filename = sys.argv[1]
     if not os.path.isfile(filename):
         print '%s is not a valid file' % filename
         sys.exit(1)
-
 
 def pegi_check():
 	print "Analyzing registry..."
@@ -327,7 +317,6 @@ def pegi_check():
 
 	print "Analyzing interesting calls.."
 	start_analysis_system_calls()
-
 
 pegi_check()
 print "\nChecking VirusTotal results...\n"
