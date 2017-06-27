@@ -1,9 +1,9 @@
-#(c) 2011 Muhammad Najmi Ahmad Zabidi
+#(c) 2017 Muhammad Najmi Ahmad Zabidi
 # Modified codes, as in the python codes
 
 To use, works with Python 2.x (suggesting 2.6,2.7)
 
-python pi-ngaji.py <binary-file>
+python2 pi-ngaji.py <binary-file>
 
 NOTES:
 -It needs python-pe. In Ubuntu, this can be achieved by sudo apt-get install python-pefile
