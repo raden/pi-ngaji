@@ -1,7 +1,6 @@
 #Licensed under GPL v 3
 #merged and modified from Joxean Zerowine VM detect, Aurora Regular expressions search for static analysis
 #modified by Najmi (2011)
-# VT modules was modified from Bryce Boe http://www.bryceboe.com/2010/09/01/submitting-binaries-to-virustotal/
 import hashlib
 import time
 import binascii
@@ -12,14 +11,19 @@ import pefile
 import peutils
 import string
 import re
+import requests
 
 import hashlib, httplib, mimetypes, os, pprint, simplejson, sys, urlparse
 DEFAULT_TYPE = 'application/octet-stream'
 
 REPORT_URL = 'https://www.virustotal.com/api/get_file_report.json'
+#REPORT_URL = 'http://www.virustotal.com/vtapi/v2/url/report'
 SCAN_URL = 'https://www.virustotal.com/api/scan_file.json'
+#SCAN_URL = 'https://www.virustotal.com/vtapi/v2/url/scan'
 
+# Please get your API key from Virus Total's website
 API_KEY = ''
+
 
 # The following function is modified from the snippet at:
 # http://code.activestate.com/recipes/146306/
@@ -282,17 +286,18 @@ def post_multipart(url, fields, files=()):
 
 def scan_file(filename):
     files = [('file', filename, open(filename, 'rb').read())]
-    json = post_multipart(SCAN_URL, {'key':API_KEY}, files)
+    json = requests.post(SCAN_URL, {'key':API_KEY}, files)
     return simplejson.loads(json)
 
 def get_report(filename):
     md5sum = hashlib.md5(open(filename, 'rb').read()).hexdigest()
     json = post_multipart(REPORT_URL, {'resource':md5sum, 'key':API_KEY})
     data = simplejson.loads(json)
-    if data['result'] != 1:
+    
+    if 'response_code' in data != 1:
         print 'Result not found, submitting file.'
         data = scan_file(filename)
-        if data['result'] == 1:
+        if 'response_code' in data == 1:
             print 'Submit successful.'
             print 'Please wait a few minutes and try again to receive report.'
         else:
@@ -325,7 +330,5 @@ def pegi_check():
 
 
 pegi_check()
-print "\nChecking VirusTotal results..."
-print "It needs you to insert your API key inside this code.."
-print "Please read http://www.virustotal.com/advanced.html#publicapi for API details\n"
+print "\nChecking VirusTotal results...\n"
 get_report(filename)
